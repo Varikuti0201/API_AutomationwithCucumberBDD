@@ -41,11 +41,8 @@ public class HelperClass extends Utils {
 
 		APIResources resourceAPI = APIResources.valueOf(resource);
 		System.out.println(resourceAPI.getResource());
-		
-		
-			resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-		
-		
+
+		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
 		if (requestmethod.equalsIgnoreCase("POST")) {
 			response = res.expect().defaultParser(Parser.JSON).when().post(resourceAPI.getResource());
@@ -56,7 +53,6 @@ public class HelperClass extends Utils {
 			response = res.expect().defaultParser(Parser.JSON).when().get(resourceAPI.getResource());
 			gc = response.as(GetCar.class);
 		}
-		
 
 		return gc;
 
@@ -101,7 +97,7 @@ public class HelperClass extends Utils {
 			response = res.expect().defaultParser(Parser.JSON).when().get(resourceAPI.getResource());
 			gc = response.as(GetCar.class);
 		}
-		
+
 		return gc;
 
 	}
@@ -121,91 +117,63 @@ public class HelperClass extends Utils {
 
 	}
 
-	public void validate_if_userInput_in_response_body(String inputkeyValue,String input) {
+	public void validate_if_userInput_in_response_body(String inputkeyValue, String input) {
 
 		Map<Object, Object> list = gc.getWkda();
-	
-		
-		if(input.equalsIgnoreCase("valid")) {
 
-			if(list.isEmpty()) {
+		if (input.equalsIgnoreCase("valid")) {
+
+			if (list.isEmpty()) {
 				System.out.println("User is returned with empty response for valid input");
 				assertFalse("User is returned with empty response for valid input", true);
-			}
-			else {
+			} else {
 				for (Object key : list.keySet()) {
 
 					if (key.toString().equalsIgnoreCase(inputkeyValue)) {
-						System.out.println("*******User Input value Displayed "+list.get(key));
+						System.out.println("*******User Input value Displayed " + list.get(key));
 						assertTrue("User input value is present in the response body", true);
 						break;
 					}
 
-				}	
+				}
 			}
-		}		
-			
-			
-		else if(input.equalsIgnoreCase("Invalid")) {
-			if(list.isEmpty()) {
+		}
+
+		else if (input.equalsIgnoreCase("Invalid")) {
+			if (list.isEmpty()) {
 				System.out.println("User is displayed with empty response for invalid input ");
 				assertTrue("User is displayed with empty response for invalid input ", true);
-			}
-			else {
-				System.out.println("List Size***********"+list.size());
+			} else {
+				System.out.println("List Size***********" + list.size());
 				System.out.println("User is returned with some response for invalid input");
 				assertFalse("User is returned with some response for invalid input", true);
 			}
 		}
-		
-		
-			
-		
-		}
-	
-		
-			
-			
-	
-	
-			
-			
-		
-		
-	
-	
-		
-		
 
-	
+	}
 
-		
 	public void userCallWithInvalidResource_HttpRequest(String resource, String requestmethod) {
 
 		APIResources resourceAPI = APIResources.valueOf(resource);
 		System.out.println(resourceAPI.getResource());
-		
-		
-			resspec = new ResponseSpecBuilder().expectStatusCode(404).expectContentType(ContentType.JSON).build();
-		
-		
+
+		resspec = new ResponseSpecBuilder().expectStatusCode(404).expectContentType(ContentType.JSON).build();
 
 		if (requestmethod.equalsIgnoreCase("POST")) {
 			response = res.expect().defaultParser(Parser.JSON).when().post(resourceAPI.getResource());
-			
+
 		}
 
 		else if (requestmethod.equalsIgnoreCase("GET")) {
 			response = res.expect().defaultParser(Parser.JSON).when().get(resourceAPI.getResource());
-			
-		}
-		
 
-		
+		}
 
 	}
+
 	public enum UserInput {
 		VALID("valid"), INVALID("invalid");
+
 		private String value;
 
 		public String getValue() {

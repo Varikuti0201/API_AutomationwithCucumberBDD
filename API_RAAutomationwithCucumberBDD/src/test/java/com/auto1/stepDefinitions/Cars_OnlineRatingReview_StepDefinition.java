@@ -18,11 +18,11 @@ public class Cars_OnlineRatingReview_StepDefinition {
 		helper.userCallWithHttpRequest_manufacturer(resource, method);
 
 	}
+
 	@Then("user should be displayed with status code {string}")
 	public void user_should_be_displayed_with_status_code(String code) {
 		helper.getRequestStatus(code);
 	}
-	
 
 	@And("{string} in response body is {string}")
 	public void something_in_response_body_is_something(String keyVal, String expectedValue) {
@@ -31,8 +31,8 @@ public class Cars_OnlineRatingReview_StepDefinition {
 	}
 
 	@Then("validate if {string} is displayed in the response body for {string} input")
-	public void validate_if_userInputValue_is_displayed_in_the_response_body(String userInput,String inputType) {
-		helper.validate_if_userInput_in_response_body(userInput,inputType);
+	public void validate_if_userInputValue_is_displayed_in_the_response_body(String userInput, String inputType) {
+		helper.validate_if_userInput_in_response_body(userInput, inputType);
 	}
 
 	@When("user calls {string} for the input {string} with {string} http request")
@@ -44,13 +44,14 @@ public class Cars_OnlineRatingReview_StepDefinition {
 	public void user_calls_built_dates_http_request(String resource, String param1, String param2, String method) {
 		helper.userCallHttpRequest_forBuiltDates(resource, param1, param2, method);
 	}
+
 	@Then("validate response body for {string} input")
 	public void validate_response_body_for_input(String inputType) {
-		helper.validate_if_userInput_in_response_body("",inputType);
+		helper.validate_if_userInput_in_response_body("", inputType);
 	}
 
 	@When("user calls invalid resource {string}  with {string}  http request")
 	public void user_calls_invalid_resource_with_http_request(String resource, String request) {
-		helper.userCallWithInvalidResource_HttpRequest(resource,request);
+		helper.userCallWithInvalidResource_HttpRequest(resource, request);
 	}
 }

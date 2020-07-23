@@ -12,43 +12,31 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class Utils {
-	
-
 
 	public static RequestSpecification req;
-	
-	
-	public RequestSpecification requestSpecification() throws IOException
-	{
+
+	public RequestSpecification requestSpecification() throws IOException {
 		System.out.println("Inside request spec");
 		PropReader.GetInstance();
-		if(req==null)
-		{
-		PrintStream log =new PrintStream(new FileOutputStream("logging.txt"));
-		System.out.println(PropReader.getBaseUrl());
-		 req=new RequestSpecBuilder().setBaseUri(PropReader.getBaseUrl()).addQueryParam("wa_key","coding-puzzle-client-449cc9d")
-				 .addFilter(RequestLoggingFilter.logRequestTo(log))
-				 .addFilter(ResponseLoggingFilter.logResponseTo(log))
-		.setContentType(ContentType.JSON).build();
-		 System.out.println(req.log().all());
-		 return req;
+		if (req == null) {
+			PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
+			System.out.println(PropReader.getBaseUrl());
+			req = new RequestSpecBuilder().setBaseUri(PropReader.getBaseUrl())
+					.addQueryParam("wa_key", "coding-puzzle-client-449cc9d")
+					.addFilter(RequestLoggingFilter.logRequestTo(log))
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(ContentType.JSON).build();
+			System.out.println(req.log().all());
+			return req;
 		}
 		System.out.println(req.log().all());
 		return req;
-		
-		
-	}
-	
-	
-	
-	
-	
-	public String getJsonPath(Response response,String key)
-	{
-		  String resp=response.asString();
-		JsonPath   js = new JsonPath(resp);
-		return js.get(key).toString();
+
 	}
 
+	public String getJsonPath(Response response, String key) {
+		String resp = response.asString();
+		JsonPath js = new JsonPath(resp);
+		return js.get(key).toString();
+	}
 
 }
