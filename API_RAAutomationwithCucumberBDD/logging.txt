@@ -1,0 +1,38 @@
+Request method:	GET
+Request URI:	http://api-aws-eu-qa-1.auto1-test.com/v1/car-types/main-types?wa_key=coding-puzzle-client-449cc9d&manufacturer=0few
+Proxy:			<none>
+Request params:	<none>
+Query params:	wa_key=coding-puzzle-client-449cc9d
+				manufacturer=0few
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Fri, 24 Jul 2020 08:34:00 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-B3-TraceId: b67da5e13f2b967d
+X-Application-Context: main-api-gatekeeper:qa-1,ecs:1000, cardata-service:qa-1,ecs:1000
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: HEAD, GET, OPTIONS, POST, PUT, PATCH, DELETE
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With, remember-me
+X-WKDA-Service-Version: e0c6e85
+X-WA-Requires: 234
+X-WA-Implements: 2.6202
+Cache-Control: max-age=3600
+
+{
+    "page": 0,
+    "pageSize": 2147483647,
+    "totalPageCount": 0,
+    "wkda": {
+        
+    }
+}

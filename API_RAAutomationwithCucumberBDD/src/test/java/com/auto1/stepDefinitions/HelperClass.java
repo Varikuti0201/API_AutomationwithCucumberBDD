@@ -27,16 +27,20 @@ public class HelperClass extends Utils {
 	Response response;
 	GetCar gc;
 
+	/* The @getRequest method helps to build the request spec builder */
 	public void getRequest() {
 		try {
 			res = given().spec(requestSpecification());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
+	/*
+	 * The @userCallWithHttpRequest_manufacturer method helps to get the details of
+	 * the car by taking resource and requestmethod as parameters
+	 */
 	public GetCar userCallWithHttpRequest_manufacturer(String resource, String requestmethod) {
 
 		APIResources resourceAPI = APIResources.valueOf(resource);
@@ -58,6 +62,11 @@ public class HelperClass extends Utils {
 
 	}
 
+	/*
+	 * The @userCallHttpRequest_forCarMainTypes method helps to get the details of
+	 * the car maintype by taking resource,requestmethod and manfacturecode as
+	 * parameters
+	 */
 	public GetCar userCallHttpRequest_forCarMainTypes(String resource, String requestmethod, String manufactureCode) {
 
 		APIResources resourceAPI = APIResources.valueOf(resource);
@@ -79,6 +88,11 @@ public class HelperClass extends Utils {
 
 	}
 
+	/*
+	 * The @userCallHttpRequest_forBuiltDates method helps to return the details of
+	 * the car builddates by taking resource,requestmethod,mainTypeCode and
+	 * manfacturecode as parameters
+	 */
 	public GetCar userCallHttpRequest_forBuiltDates(String resource, String manufactureCode, String mainTypeCode,
 			String requestmethod) {
 
@@ -102,11 +116,19 @@ public class HelperClass extends Utils {
 
 	}
 
+	/*
+	 * The @getRequestStatus method helps to validate the status code after parsing
+	 * the response body and takes code as parameters
+	 */
 	public void getRequestStatus(String code) {
 		assertEquals(response.getStatusCode(), Integer.parseInt(code));
 
 	}
 
+	/*
+	 * The @getJsonPath method helps to extract the respose as string and value pair
+	 * analysis and asserts the value and takes key and expected value as parameters
+	 */
 	public void getJsonPath(String Key, String expectedVal) {
 		String resp = response.asString();
 		JsonPath js = new JsonPath(resp);
@@ -117,6 +139,10 @@ public class HelperClass extends Utils {
 
 	}
 
+	/*
+	 * @validate_if_userInput_in_response_body method validates the user input in
+	 * the response body
+	 */
 	public void validate_if_userInput_in_response_body(String inputkeyValue, String input) {
 
 		Map<Object, Object> list = gc.getWkda();
@@ -152,6 +178,10 @@ public class HelperClass extends Utils {
 
 	}
 
+	/*
+	 * @userCallWithInvalidResource_HttpRequest method validates when the user
+	 * passes the invalid input
+	 */
 	public void userCallWithInvalidResource_HttpRequest(String resource, String requestmethod) {
 
 		APIResources resourceAPI = APIResources.valueOf(resource);
